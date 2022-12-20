@@ -3,16 +3,16 @@ filename=$2
 inputfile=$3
 outputfile=${filename%.*}
 
-if [ "$compiler" == "g++" ]
+if [ "$compiler" = "g++" ]
 then
-    if   $(g++ -o $outputfile $filename)
+    if $(g++ -o $outputfile $filename)
     then
         ./$outputfile < $inputfile
     fi
 exit
-elif [ "$compiler" == "javac" ]
+elif [ "$compiler" = "javac" ]
 then
-    if $(javac $filename) 
+    if $( javac $filename ) 
     then
         java $outputfile < $inputfile
     fi
@@ -20,6 +20,7 @@ then
 fi
 
 $compiler $filename < $inputfile
+
 
 # will take 2 arguements
 # 1--> compiler name
